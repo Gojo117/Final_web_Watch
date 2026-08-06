@@ -1,2 +1,27 @@
+<nav class="navbar" *ngIf="showNavbar">
+  <div class="navbar-container">
+    <button class="navbar-toggle" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
+    <ul class="navbar-links" [class.active]="isMenuOpen">
+      <li>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a routerLink="/about" routerLinkActive="active">About</a>
+      </li>
+      <li>
+        <a routerLink="/products" routerLinkActive="active">Products</a>
+      </li>
+      <li>
+        <a routerLink="/contact" routerLinkActive="active">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <router-outlet></router-outlet>

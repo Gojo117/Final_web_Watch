@@ -1,7 +1,6 @@
 <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
-  <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
+  <div class="card shadow p-4" style="width: 100%; max-width: 400px">
     <h3 class="text-center mb-4">Login</h3>
-   
 
     <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
 
@@ -23,7 +22,9 @@
           type="password"
           class="form-control"
           formControlName="password"
-          [class.is-invalid]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+          [class.is-invalid]="
+            loginForm.get('password')?.touched && loginForm.get('password')?.invalid
+          "
         />
         <div class="invalid-feedback">Password must be at least 6 characters.</div>
       </div>

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +12,10 @@ import { RouterLink } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
   errorMsg = '';
+
+  // Static test credentials
+  private readonly STATIC_EMAIL = 'test@example.com';
+  private readonly STATIC_PASSWORD = '123456';
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
@@ -29,13 +32,9 @@ export class LoginComponent {
 
     const { email, password } = this.loginForm.value;
 
-    // Replace with real auth call (HTTP request to your backend)
-    if (email === 'test@example.com' && password === '123456') {
-      // Navigate to internal route
-      this.router.navigate(['/dashboard']);
-
-      // OR redirect to an external website instead:
-      // window.location.href = 'https://example.com';
+    if (email === this.STATIC_EMAIL && password === this.STATIC_PASSWORD) {
+      this.errorMsg = '';
+      this.router.navigate(['/home']);
     } else {
       this.errorMsg = 'Invalid email or password';
     }
