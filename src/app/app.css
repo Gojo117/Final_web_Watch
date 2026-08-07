@@ -1,6 +1,6 @@
 .navbar {
   background-color: #1f2937;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -10,8 +10,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
 }
 
 .navbar-logo {
@@ -19,6 +19,14 @@
   font-size: 1.4rem;
   font-weight: 700;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
 }
 
 .navbar-links {
@@ -28,17 +36,32 @@
   margin: 0;
   padding: 0;
 }
-
 .navbar-links a {
-  color: #d1d5db;
+  color: 
+#d1d5db;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
-
 .navbar-links a:hover,
 .navbar-links a.active {
   color: #fff;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: .3s;
+  margin-left: 2rem;
+  font-weight: 600;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .navbar-toggle {
@@ -56,25 +79,28 @@
   background-color: #fff;
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
   .navbar-toggle {
     display: flex;
   }
-
   .navbar-links {
     display: none;
     flex-direction: column;
+    align-items: flex-start;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #1f2937;
-    padding: 1rem 1.5rem;
-    gap: 1rem;
+    background: linear-gradient(90deg, #6d28d9 0%, #2563eb 100%);
+    padding: 1.5rem 2rem;
+    gap: 1.25rem;
   }
-
   .navbar-links.active {
     display: flex;
+  }
+  .logout-btn {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    width: 100%;
   }
 }

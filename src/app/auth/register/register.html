@@ -1,35 +1,142 @@
 <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
-  <div class="card shadow p-4" style="width: 100%; max-width: 420px;">
+  <div class="card shadow p-4" style="width:100%; max-width:430px;">
+
     <h3 class="text-center mb-4">Register</h3>
 
-    <div class="alert alert-success" *ngIf="successMsg">{{ successMsg }}</div>
+    <div class="alert alert-success" *ngIf="successMsg">
+      {{ successMsg }}
+    </div>
+
+    <div class="alert alert-danger" *ngIf="errorMsg">
+      {{ errorMsg }}
+    </div>
 
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <!-- Full Name -->
       <div class="mb-3">
         <label class="form-label">Full Name</label>
-        <input type="text" class="form-control" formControlName="name" />
+
+        <div class="input-group">
+
+          <span class="input-group-text">
+            <i class="bi bi-person-fill"></i>
+          </span>
+
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter your full name"
+            formControlName="name">
+
+        </div>
       </div>
 
+      <!-- Email -->
       <div class="mb-3">
-        <label class="form-label">Email address</label>
-        <input type="email" class="form-control" formControlName="email" />
+        <label class="form-label">Email Address</label>
+
+        <div class="input-group">
+
+          <span class="input-group-text">
+            <i class="bi bi-envelope-fill"></i>
+          </span>
+
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter your email"
+            formControlName="email">
+
+        </div>
       </div>
 
+      <!-- Password -->
       <div class="mb-3">
+
         <label class="form-label">Password</label>
-        <input type="password" class="form-control" formControlName="password" />
+
+        <div class="input-group">
+
+          <span class="input-group-text">
+            <i class="bi bi-lock-fill"></i>
+          </span>
+
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            placeholder="Enter your password"
+            formControlName="password">
+
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="togglePassword()">
+
+            <i
+              class="bi"
+              [ngClass]="showPassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'">
+            </i>
+
+          </button>
+
+        </div>
+
       </div>
 
+      <!-- Confirm Password -->
       <div class="mb-3">
+
         <label class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" formControlName="confirmPassword" />
+
+        <div class="input-group">
+
+          <span class="input-group-text">
+            <i class="bi bi-shield-lock-fill"></i>
+          </span>
+
+          <input
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            class="form-control"
+            placeholder="Confirm your password"
+            formControlName="confirmPassword">
+
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="toggleConfirmPassword()">
+
+            <i
+              class="bi"
+              [ngClass]="showConfirmPassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'">
+            </i>
+
+          </button>
+
+        </div>
+
       </div>
 
-      <button type="submit" class="btn btn-success w-100">Register</button>
+      <button
+        class="btn btn-success w-100"
+        type="submit">
+
+        <i class="bi bi-person-plus-fill me-2"></i>
+        Register
+
+      </button>
 
       <p class="text-center mt-3 mb-0">
-        Already have an account? <a routerLink="/login">Login</a>
+
+        Already have an account?
+
+        <a routerLink="/login">
+          Login
+        </a>
+
       </p>
+
     </form>
+
   </div>
 </div>

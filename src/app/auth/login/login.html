@@ -1,39 +1,94 @@
 <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
-  <div class="card shadow p-4" style="width: 100%; max-width: 400px">
+  <div class="card shadow p-4" style="width:100%;max-width:400px">
+
     <h3 class="text-center mb-4">Login</h3>
 
-    <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
+    <div class="alert alert-danger" *ngIf="errorMsg">
+      {{ errorMsg }}
+    </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <!-- Email -->
       <div class="mb-3">
         <label class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          formControlName="email"
-          [class.is-invalid]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
-        />
-        <div class="invalid-feedback">Please enter a valid email.</div>
+
+        <div class="input-group">
+
+          <span class="input-group-text">
+            <i class="bi bi-envelope-fill"></i>
+          </span>
+
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Enter your email"
+            [class.is-invalid]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+
+        </div>
+
+        <div class="invalid-feedback d-block"
+          *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+
+          Please enter a valid email.
+
+        </div>
+
       </div>
 
+      <!-- Password -->
       <div class="mb-3">
+
         <label class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          formControlName="password"
-          [class.is-invalid]="
-            loginForm.get('password')?.touched && loginForm.get('password')?.invalid
-          "
-        />
-        <div class="invalid-feedback">Password must be at least 6 characters.</div>
+
+        <div class="input-group">
+
+          <span class="input-group-text">
+            <i class="bi bi-lock-fill"></i>
+          </span>
+
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            formControlName="password"
+            placeholder="Enter your password">
+
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="togglePassword()">
+
+            <i
+              class="bi"
+              [ngClass]="showPassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'">
+            </i>
+
+          </button>
+
+        </div>
+
       </div>
 
-      <button type="submit" class="btn btn-primary w-100">Login</button>
+      <button
+        type="submit"
+        class="btn btn-primary w-100">
+
+        Login
+
+      </button>
 
       <p class="text-center mt-3 mb-0">
-        Don't have an account? <a routerLink="/register">Register</a>
+
+        Don't have an account?
+
+        <a routerLink="/register">
+          Register
+        </a>
+
       </p>
+
     </form>
+
   </div>
 </div>
