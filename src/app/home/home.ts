@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Product, ProductService } from '../services/product';
+import { environment } from '../../environments/environment'; 
 
 type HomeTab = 'best-sellers' | 'new-in' | 'sale';
 
@@ -24,7 +25,8 @@ export class Home implements OnInit {
   activeTab: HomeTab = 'best-sellers';
   isLoading = true;
 
-  imageBaseUrl = 'http://localhost:168';
+
+  imageBaseUrl = environment.apiUrl;
 
   // =========================================================
   // CONSTRUCTOR
