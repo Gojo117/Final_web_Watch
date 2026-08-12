@@ -1,1 +1,243 @@
-<p>home works!</p>
+<div class="home-page">
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero">
+
+    <div class="hero-overlay">
+      <img src="/banner.webp" alt="Watch Banner">
+    </div>
+
+    <div class="hero-content">
+
+      <p class="hero-small">
+        TIMELESS ELEGANCE
+      </p>
+
+      <h1>
+        Allow Yourself To<br>
+        Be A Step Ahead
+      </h1>
+
+      <p class="hero-description">
+        Choose a watch that expresses your uniqueness.
+      </p>
+
+      <a routerLink="/products" class="hero-btn">
+        ORDER NOW
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= BENEFITS ================= -->
+
+  <section class="benefits">
+
+    <div class="benefit">
+      <h3>Extended Warranty</h3>
+      <p>Up To 5 Years Coverage</p>
+    </div>
+
+    <div class="benefit">
+      <h3>Free Shipping</h3>
+      <p>We Offer Free Shipping All Over The World</p>
+    </div>
+
+    <div class="benefit">
+      <h3>Free 30 Days Returns</h3>
+      <p>Offered On All Items</p>
+    </div>
+
+  </section>
+
+
+  <!-- ================= PRODUCTS (Best Sellers / New In / Sale) ================= -->
+
+  <section class="products-section">
+
+   <div class="section-tabs">
+      <a [class.active]="activeTab === 'best-sellers'" (click)="setTab('best-sellers')">Best Sellers</a>
+      <a [class.active]="activeTab === 'new-in'" (click)="setTab('new-in')">New In</a>
+      <a [class.active]="activeTab === 'sale'" (click)="setTab('sale')">Sale</a>
+    </div>
+
+    <div class="product-grid">
+
+      @if (isLoading) {
+        <p>Loading products...</p>
+      } @else if (displayedProducts.length === 0) {
+        <p>No products to show in this category yet.</p>
+      } @else {
+        @for (product of displayedProducts; track product.id) {
+          <div class="product-card">
+
+            <div class="product-image">
+              @if (product.imageUrl) {
+                <img [src]="imageBaseUrl + product.imageUrl" [alt]="product.name">
+              } @else {
+                <img src="/placeholder.webp" [alt]="product.name">
+              }
+            </div>
+
+            <h3>{{ product.name }}</h3>
+
+            <p class="product-name">
+              {{ product.description || 'No description available' }}
+            </p>
+
+            @if (activeTab === 'sale' && getDiscountPrice(product) !== null) {
+              <p class="price">
+                <span style="text-decoration: line-through; color: #999; margin-right: 6px;">
+                  ${{ product.price.toFixed(2) }}
+                </span>
+                ${{ getDiscountPrice(product)!.toFixed(2) }}
+              </p>
+            } @else {
+              <p class="price">
+                ${{ product.price.toFixed(2) }}
+              </p>
+            }
+
+          </div>
+        }
+      }
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FEATURE ================= -->
+
+  <section class="feature-section">
+
+    <div class="feature-image">
+      <img
+        src="/banner2.webp"
+        alt="Luxury Watches"
+      >
+    </div>
+
+    <div class="feature-content">
+
+      <h2>
+        A Watch That Defines
+        Your Style
+      </h2>
+
+      <p>
+        Choose a watch that will not only be an
+        integral part of your style but also a
+        symbol of your unparalleled appreciation.
+      </p>
+
+      <a routerLink="/products">
+        DISCOVER COLLECTION
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= BRANDS ================= -->
+
+  <section class="brands-section">
+
+    <h2>Brands We Love</h2>
+
+    <div class="brands">
+
+      <span>TIMEX</span>
+
+      <span>GUCCI</span>
+
+      <span class="omega">
+        Ω OMEGA
+      </span>
+
+      <span>TISSOT</span>
+
+      <span class="cartier">
+        Cartier
+      </span>
+
+      <span class="casio">
+        CASIO
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= TESTIMONIALS ================= -->
+
+  <section class="testimonials">
+
+    <h2>Testimonials</h2>
+
+    <div class="testimonial-grid">
+
+
+      <div class="testimonial-card">
+
+        <img
+          src="/feedback.jpg"
+          alt="Customer"
+        >
+
+        <h3>Mark</h3>
+
+        <p>
+          I am thrilled with the watch I purchased!
+          The design is exquisite, and it adds a touch
+          of sophistication to my style.
+        </p>
+
+      </div>
+
+
+      <div class="testimonial-card">
+
+        <img
+          src="/feedback2.jpg"
+          alt="Customer"
+        >
+
+        <h3>Milana</h3>
+
+        <p>
+          I love my new watch! It's a perfect blend
+          of style and functionality. The attention
+          to detail is impressive.
+        </p>
+
+      </div>
+
+
+      <div class="testimonial-card">
+
+        <img
+          src="/feedback3.jpg"
+          alt="Customer"
+        >
+
+        <h3>Nikolas</h3>
+
+        <p>
+          Great customer service and an amazing
+          selection of watches! I found the perfect
+          timepiece that suits my taste and lifestyle.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

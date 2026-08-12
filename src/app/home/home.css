@@ -1,0 +1,738 @@
+/* ========================================
+   HOME
+======================================== */
+
+.home-page {
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  color: #111111;
+
+  font-family:
+    "Times New Roman",
+    Georgia,
+    serif;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  height: 550px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+}
+
+
+/* ========================================
+   HERO IMAGE / OVERLAY
+======================================== */
+
+.hero-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 0;
+
+  overflow: hidden;
+}
+
+.hero-overlay img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center center;
+}
+
+
+/* DARK OVERLAY */
+
+.hero-overlay::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  z-index: 1;
+}
+
+
+/* ========================================
+   HERO CONTENT
+======================================== */
+
+.hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 80%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  color: white;
+}
+
+.hero-small {
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  letter-spacing: 4px;
+
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 58px;
+
+  font-weight: 400;
+
+  line-height: 1.05;
+
+  margin: 0 0 25px;
+}
+
+.hero-description {
+  font-family: Arial, sans-serif;
+
+  font-size: 14px;
+
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  display: inline-block;
+
+  border: 1px solid white;
+
+  padding: 13px 28px;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: 1px;
+
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: white;
+
+  color: #111111;
+}
+
+.section-tabs a:hover:not(.active) {
+  color: #111;
+}
+
+/* ========================================
+   BENEFITS
+======================================== */
+
+.benefits {
+  background: #111111;
+
+  color: white;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  padding: 25px 10%;
+}
+
+.benefit {
+  text-align: center;
+
+  padding: 10px 30px;
+
+  border-right: 1px solid #555;
+}
+
+.benefit:last-child {
+  border-right: none;
+}
+
+.benefit h3 {
+  font-family: Arial, sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  margin-bottom: 8px;
+}
+
+.benefit p {
+  font-family: Arial, sans-serif;
+
+  font-size: 9px;
+
+  color: #aaa;
+
+  margin: 0;
+}
+
+
+/* ========================================
+   PRODUCTS
+======================================== */
+
+.products-section {
+  max-width: 1200px;
+
+  margin: auto;
+
+  padding: 80px 30px;
+}
+
+.section-tabs {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 35px;
+
+  margin-bottom: 45px;
+}
+
+.section-tabs a {
+  font-size: 18px;
+
+  color: #555;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.section-tabs a.active {
+  color: #111;
+
+  font-weight: bold;
+
+  text-decoration: underline;
+}
+
+
+.product-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 15px;
+}
+
+
+.product-card {
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  width: 100%;
+
+  height: 300px;
+
+  background: #f5f5f5;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+  transition: 0.4s;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.product-card h3 {
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  margin: 12px 0 6px;
+}
+
+.product-name {
+  font-family: Arial, sans-serif;
+
+  font-size: 10px;
+
+  color: #555;
+
+  line-height: 1.5;
+
+  min-height: 30px;
+}
+
+.price {
+  font-family: Arial, sans-serif;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  margin-top: 10px;
+}
+
+
+/* ========================================
+   FEATURE
+======================================== */
+
+.feature-section {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  min-height: 400px;
+
+  background: #111111;
+
+  color: white;
+}
+
+.feature-image {
+  width: 100%;
+
+  height: 100%;
+}
+
+.feature-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.feature-content {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 70px;
+}
+
+.feature-content h2 {
+  font-size: 34px;
+
+  font-weight: 400;
+
+  line-height: 1.2;
+
+  margin-bottom: 25px;
+}
+
+.feature-content p {
+  font-family: Arial, sans-serif;
+
+  color: #bbb;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+
+  max-width: 430px;
+
+  margin-bottom: 30px;
+}
+
+.feature-content a {
+  color: white;
+
+  border-bottom: 1px solid white;
+
+  padding-bottom: 8px;
+
+  width: fit-content;
+
+  text-decoration: none;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+}
+
+
+/* ========================================
+   BRANDS
+======================================== */
+
+.brands-section {
+  padding: 80px 20px;
+
+  text-align: center;
+}
+
+.brands-section h2 {
+  font-size: 24px;
+
+  font-weight: 400;
+
+  margin-bottom: 55px;
+}
+
+.brands {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 55px;
+}
+
+.brands span {
+  font-family: Arial, sans-serif;
+
+  font-size: 24px;
+
+  font-weight: bold;
+
+  color: #222;
+}
+
+.brands .omega {
+  color: #8b1e2d;
+}
+
+.brands .cartier {
+  font-family: "Times New Roman", serif;
+
+  font-style: italic;
+
+  font-weight: 400;
+}
+
+.brands .casio {
+  color: #174b91;
+}
+
+
+/* ========================================
+   TESTIMONIALS
+======================================== */
+
+.testimonials {
+  max-width: 1200px;
+
+  margin: auto;
+
+  padding: 40px 30px 90px;
+}
+
+.testimonials > h2 {
+  text-align: center;
+
+  font-size: 24px;
+
+  font-weight: 400;
+
+  margin-bottom: 50px;
+}
+
+.testimonial-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+}
+
+.testimonial-card img {
+  width: 100%;
+
+  height: 200px;
+
+  object-fit: cover;
+}
+
+.testimonial-card h3 {
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  margin-top: 12px;
+}
+
+.testimonial-card p {
+  font-family: Arial, sans-serif;
+
+  color: #555;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   NEWSLETTER
+======================================== */
+
+.newsletter {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  background: #111111;
+
+  color: white;
+
+  min-height: 350px;
+}
+
+.newsletter-content {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 70px;
+
+  max-width: 600px;
+
+  margin-left: auto;
+}
+
+.newsletter-content h2 {
+  font-size: 30px;
+
+  font-weight: 400;
+
+  margin-bottom: 15px;
+}
+
+.newsletter-content p {
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  color: #aaa;
+
+  max-width: 400px;
+
+  margin-bottom: 25px;
+}
+
+.subscribe-form {
+  display: flex;
+
+  max-width: 430px;
+}
+
+.subscribe-form input {
+  height: 42px;
+
+  flex: 1;
+
+  border: none;
+
+  outline: none;
+
+  padding: 0 12px;
+
+  font-size: 11px;
+}
+
+.subscribe-form button {
+  width: 120px;
+
+  background: #111111;
+
+  border: 1px solid white;
+
+  color: white;
+
+  font-size: 9px;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+}
+
+.subscribe-form button:hover {
+  background: white;
+
+  color: #111111;
+}
+
+.newsletter-image {
+  height: 100%;
+}
+
+.newsletter-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+  .hero {
+    height: 500px;
+  }
+
+  .hero h1 {
+    font-size: 45px;
+  }
+
+  .product-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .feature-section {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-image {
+    height: 350px;
+  }
+
+  .newsletter {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-content {
+    margin: 0;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .hero {
+    height: 450px;
+  }
+
+  .hero-content {
+    width: 85%;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .benefits {
+    grid-template-columns: 1fr;
+
+    padding: 20px;
+  }
+
+  .benefit {
+    border-right: none;
+
+    border-bottom: 1px solid #444;
+
+    padding: 18px;
+  }
+
+  .benefit:last-child {
+    border-bottom: none;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+  }
+
+  .product-image {
+    height: 220px;
+  }
+
+  .brands {
+    gap: 30px;
+  }
+
+  .brands span {
+    font-size: 18px;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-content {
+    padding: 50px 30px;
+  }
+
+  .newsletter-content {
+    padding: 50px 30px;
+  }
+
+  .subscribe-form {
+    width: 100%;
+  }
+
+}

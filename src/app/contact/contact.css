@@ -1,0 +1,212 @@
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .contact-page {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem 0;
+    background: #ffffff;
+    color: #1e1e2a;
+  }
+
+  /* ===== HEADER WITH IMAGE TAG ===== */
+  .contact-header {
+    position: relative;
+    border-radius: 24px;
+    margin: 1.5rem 0 3rem;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  }
+
+  /* Image tag as background */
+  .header-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  /* Dark overlay */
+  .header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.40) 100%);
+    z-index: 1;
+    border-radius: 24px;
+  }
+
+  /* Content on top of background */
+  .header-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    color: #ffffff;
+    max-width: 700px;
+  }
+
+  .header-content h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .header-content .subheadline {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 400;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ===== TWO COLUMN GRID ===== */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .contact-info h2,
+  .contact-form h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .intro-text {
+    color: #4a4a5a;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  /* ===== DETAILS LIST – ICONS PERFECTLY CENTERED ===== */
+  .details-list {
+    list-style: none;
+    padding: 0;
+  }
+  .details-list li {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    align-items: center;      /* <-- ICONS CENTERED vertically */
+  }
+  .details-list i {
+    font-size: 1.6rem;
+    min-width: 2rem;
+    color: #1e1e2a;
+    line-height: 1;           /* keeps icon itself centered */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .details-list strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+  }
+  .details-list a {
+    color: #1e1e2a;
+    text-decoration: none;
+  }
+  .details-list a:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== FORM ===== */
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .form-group label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #2d2d3a;
+  }
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid #d0d0dd;
+    border-radius: 8px;
+    background: #fafafc;
+    font-size: 1rem;
+    transition: 0.2s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #4f46e5;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  }
+  .send-btn {
+    background: #1e1e2a;
+    color: white;
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 1rem;
+    align-self: flex-start;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 0.5rem;
+  }
+  .send-btn:hover {
+    background: #3b3b4f;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .header-content h1 {
+      font-size: 2.5rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    .contact-header {
+      min-height: 200px;
+      margin: 0.5rem 0 2rem;
+    }
+    .header-content h1 {
+      font-size: 2rem;
+    }
+    .header-content .subheadline {
+      font-size: 1rem;
+    }
+  }

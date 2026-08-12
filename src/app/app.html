@@ -1,62 +1,107 @@
 <nav class="navbar" *ngIf="showNavbar">
   <div class="navbar-container">
 
-    <!-- Logo -->
-    <a routerLink="/home" class="navbar-logo">
-      <img src="/logo.png" alt="Logo">
-    </a>
+    <!-- Logo - LEFT -->
+    <div class="navbar-brand">
+      <a routerLink="/home" class="navbar-logo">
+        <img src="/logo_setec.png" alt="">
+      </a>
+    </div>
 
-    <!-- Mobile Menu -->
-    <button class="navbar-toggle" (click)="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  
 
-    <!-- Menu -->
+    <!-- Center Menu -->
     <ul class="navbar-links" [class.active]="isMenuOpen">
-
       <li>
-        <a routerLink="/home"
-           routerLinkActive="active">
-          Home
+        <a routerLink="/home" 
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}">
+          <i class="bi bi-house-door"></i> Home
         </a>
       </li>
-
       <li>
-        <a routerLink="/products"
+        <a routerLink="/products" 
            routerLinkActive="active">
-          Products
+          <i class="bi bi-clock"></i> Product
         </a>
       </li>
-
       <li>
-        <a routerLink="/about"
+        <a routerLink="/about" 
            routerLinkActive="active">
-          About
+          <i class="bi bi-info-circle"></i> About
         </a>
       </li>
-
       <li>
-        <a routerLink="/contact"
+        <a routerLink="/contact" 
            routerLinkActive="active">
-          Contact
+          <i class="bi bi-envelope"></i> Contact
         </a>
       </li>
-
-      <li>
-        <button
-          class="logout-btn"
-          (click)="logout()">
-
-          Logout
-
-        </button>
-      </li>
-
     </ul>
+
+    <!-- Right Side - Notifications, Wishlist & Profile -->
+    <div class="navbar-actions">
+      <!-- Notification Bell - Static -->
+      <button class="action-btn notification-btn" aria-label="Notifications">
+        <i class="bi bi-bell"></i>
+        <span class="badge" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+      </button>
+
+      <!-- Wishlist - Static -->
+      <button class="action-btn wishlist-btn" aria-label="Wishlist">
+        <i class="bi bi-heart"></i>
+        <span class="badge" *ngIf="wishlistCount > 0">{{ wishlistCount }}</span>
+      </button>
+
+      <!-- Profile Dropdown -->
+      <div class="profile-dropdown" (mouseenter)="openProfile()" (mouseleave)="closeProfile()">
+        <button class="profile-btn" aria-label="Profile" (click)="toggleProfile()">
+          <div class="profile-avatar">
+            <img [src]="userAvatar || '/default-avatar.png'" alt="Profile" class="avatar-img">
+            <span class="online-status"></span>
+          </div>
+          <span class="profile-name">{{ userName || 'Guest' }}</span>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+
+        <div class="dropdown-menu" [class.show]="isProfileOpen">
+          <div class="dropdown-header">
+            <div class="dropdown-avatar">
+              <img [src]="userAvatar || '/default-avatar.png'" alt="Profile">
+            </div>
+            <div class="dropdown-user-info">
+              <h4>{{ userName || 'Guest User' }}</h4>
+              <p>{{ userEmail || 'guest@example.com' }}</p>
+            </div>
+          </div>
+
+          <ul class="dropdown-list">
+            <li>
+              <button class="dropdown-item-btn" (click)="handleProfileClick()">
+                <i class="bi bi-person"></i> My Profile
+              </button>
+            </li>
+        
+          
+            <li class="divider"></li>
+            <li>
+              <button class="dropdown-item-btn" (click)="handleSettingsClick()">
+                <i class="bi bi-gear"></i> Settings
+              </button>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <button class="logout-btn-dropdown" (click)="logout()">
+                <i class="bi bi-box-arrow-right"></i> Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
   </div>
 </nav>
 
 <router-outlet></router-outlet>
+<app-footer *ngIf="showNavbar"></app-footer>
