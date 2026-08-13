@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  apiUrl: 'http://final-web-watch168-io.vercel.app'
+  production: false,
+  apiUrl: 'http://localhost:168'
 };
