@@ -8,8 +8,8 @@ import { Contact } from './contact/contact';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent, data: { hideNavbar: true } },
+  { path: 'register', component: RegisterComponent, data: { hideNavbar: true } },
   { path: 'home', component: Home },
   { path: 'products', component: Products },
   { path: 'about', component: About },

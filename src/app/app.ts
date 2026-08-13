@@ -1,5 +1,5 @@
-import { Component, signal, HostListener } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { Component, HostListener } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet, Router, NavigationEnd ,ActivatedRouteSnapshot } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { AuthService } from './services/auth';
@@ -12,38 +12,53 @@ import { Footer } from "./footer/footer";
   styleUrl: './app.css',
 })
 export class App {
-  showNavbar = true;
+  // Default to hidden so there's no flash of navbar before the first
+  // route resolves (important for SSR/prerendered pages on Vercel).
+  showNavbar = false;
   isMenuOpen = false;
   isProfileOpen = false;
-  
-  // User data - static (not changing)
+
   userName = 'John Doe';
   userEmail = 'john@example.com';
   userAvatar = 'https://ui-avatars.com/api/?name=John+Doe&background=d4af37&color=fff&size=40';
 
   wishlistCount = 2;
-  notificationCount = 3; // Static notification count
+  notificationCount = 3;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    // Check initial route
-    this.checkRoute(this.router.url);
-    
-    // Subscribe to route changes
+    // Compute immediately from whatever route has already resolved
+    // (works for both client nav and SSR/prerender).
+    this.applyRouteVisibility(this.router.routerState.snapshot.root);
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: any) => {
-      this.checkRoute(event.url);
+    ).subscribe(() => {
+      this.applyRouteVisibility(this.router.routerState.snapshot.root);
     });
   }
 
-  checkRoute(url: string) {
-    // Hide navbar and footer on login and register pages
-    const hideNavRoutes = ['/login', '/register'];
-    this.showNavbar = !hideNavRoutes.includes(url);
-    
-    // If on login or register, ensure menu is closed
+  /**
+   * Walks the resolved route tree (not the raw URL string) and looks
+   * for `data.hideNavbar` on any matched route/child route. This avoids
+   * the fragile URL string matching that broke on trailing slashes,
+   * query params, and Vercel's SSR/prerender redirects.
+   */
+  private getRouteData(root: ActivatedRouteSnapshot): Record<string, any> {
+    let data: Record<string, any> = {};
+    let node: ActivatedRouteSnapshot | null = root;
+    while (node) {
+      data = { ...data, ...node.data };
+      node = node.firstChild;
+    }
+    return data;
+  }
+
+  private applyRouteVisibility(root: ActivatedRouteSnapshot) {
+    const data = this.getRouteData(root);
+    this.showNavbar = !data['hideNavbar'];
+
     if (!this.showNavbar) {
       this.isMenuOpen = false;
       this.isProfileOpen = false;
@@ -52,7 +67,6 @@ export class App {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-    // Close profile dropdown when menu toggles on mobile
     if (this.isMenuOpen) {
       this.isProfileOpen = false;
     }
@@ -68,36 +82,28 @@ export class App {
     this.isProfileOpen = false;
   }
 
-  // Toggle profile for click on mobile
   toggleProfile() {
     if (window.innerWidth <= 768 && this.showNavbar) {
       this.isProfileOpen = !this.isProfileOpen;
     }
   }
 
-  // Static handlers - do nothing
   handleProfileClick() {
-    // Do nothing - static
     console.log('My Profile clicked - static');
-    this.isProfileOpen = false; // Close dropdown
-  }
-
-  handleSettingsClick() {
-    // Do nothing - static
-    console.log('Settings clicked - static');
-    this.isProfileOpen = false; // Close dropdown
-  }
-
-  logout() {
-    // Implement logout logic
-    console.log('Logging out...');
-    // Navigate to login
-    this.router.navigate(['/login']);
-    // Close profile dropdown
     this.isProfileOpen = false;
   }
 
-  // Close dropdowns on outside click
+  handleSettingsClick() {
+    console.log('Settings clicked - static');
+    this.isProfileOpen = false;
+  }
+
+  logout() {
+    console.log('Logging out...');
+    this.router.navigate(['/login']);
+    this.isProfileOpen = false;
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
     const target = event.target as HTMLElement;
